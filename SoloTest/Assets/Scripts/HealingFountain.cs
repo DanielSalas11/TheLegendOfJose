@@ -61,6 +61,6 @@ public class HealingFountain : MonoBehaviour
     public void turnOffHeal()
     {
         Jose.transform.GetChild(0).gameObject.SetActive(false);
-        canHeal = true;
+        //canHeal = true;
     }
 }
