@@ -12,7 +12,7 @@ public class HealingFountain : MonoBehaviour
     public string dialog;
     public bool canHeal;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    /*void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && Jose.GetComponent<Transform>().position.y < 3.175f)
         {
@@ -38,7 +38,7 @@ public class HealingFountain : MonoBehaviour
             this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, noTransparente);
             dialogueBox.SetActive(false);
         }
-    }
+    }*/
 
     private void Update()
     {
