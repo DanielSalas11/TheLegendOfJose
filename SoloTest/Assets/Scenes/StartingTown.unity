@@ -29909,7 +29909,6 @@ GameObject:
   - component: {fileID: 1960221041}
   - component: {fileID: 1960221044}
   - component: {fileID: 1960221037}
-  - component: {fileID: 1960221042}
   m_Layer: 0
   m_Name: healingFountain
   m_TagString: Untagged
@@ -30072,18 +30071,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5464108, y: 0.5083477}
   m_EdgeRadius: 0
---- !u!114 &1960221042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960221035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84906a6070ad5d34593f00f46a230074, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1960221044
 BoxCollider2D:
   m_ObjectHideFlags: 0
