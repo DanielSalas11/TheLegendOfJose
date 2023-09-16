@@ -34,10 +34,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void SerializeJson(){
-        if(DataService.SaveData("/player-stats.json", PlayerStats,EncryptionEnabled)){
+        if(DataService.SaveData("/player-stats.json", new PlayerData(instance),EncryptionEnabled)){
+            Debug.Log("Data Saved.");
         }else{
             Debug.LogError("Could not save file! Show something on the UI about it!");
-            InputField.text= "<color=#ff0000>Error saving data!</color>";
+            Debug.Log("Error");
         }
     }
 
@@ -58,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         //joseInventoryCopy = new Inventory(5);
         //loadPlayer();
         updateRadialBar();
+        Debug.Log(DataService.LoadData<PlayerData>("/player-stats.json",EncryptionEnabled));
     }
 
     private void updateRadialBar()

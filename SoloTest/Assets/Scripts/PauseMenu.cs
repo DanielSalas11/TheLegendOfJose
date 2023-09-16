@@ -92,6 +92,7 @@ public class PauseMenu : MonoBehaviour
         menu.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
+        joseScript.SerializeJson();
     }
 
     public void quitGame()
