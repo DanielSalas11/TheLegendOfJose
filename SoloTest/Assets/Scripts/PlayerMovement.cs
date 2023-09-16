@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,19 +17,36 @@ public class PlayerMovement : MonoBehaviour
     public RadialBar playerRadialBar;
     public int money = 0;
     public int currentXP = 0;
-    public int maxXP;
+    public int maxXP = 3;
     public int level = 1;
 
     public static PlayerMovement instance;
     public Vector2 respawnPosition;
 
-    public static Inventory joseInventory;
-    public Inventory joseInventoryCopy;
+    public static Inventory joseInventory = new Inventory(5);
+    public Inventory joseInventoryCopy = new Inventory(5);
+    private IDataService DataService = new JsonDataService();
+    private bool EncryptionEnabled;
+
+    public void ToggleEncryption(bool EncryptionEnabled)
+    {
+        this.EncryptionEnabled = EncryptionEnabled;
+    }
+
+    public void SerializeJson(){
+        if(DataService.SaveData("/player-stats.json", PlayerStats,EncryptionEnabled)){
+        }else{
+            Debug.LogError("Could not save file! Show something on the UI about it!");
+            InputField.text= "<color=#ff0000>Error saving data!</color>";
+        }
+    }
 
     private void Awake()
     {
         instance = this;
-        maxXP = 3;
+        if(maxXP == 0){
+            maxXP = 3;
+        };
     }
 
     void Start() //Defines rigidBody2D
@@ -36,8 +54,8 @@ public class PlayerMovement : MonoBehaviour
         getRespawnPosition();
         rb2D = GetComponent<Rigidbody2D>();
         rb2D.transform.position = respawnPosition;
-        joseInventory = new Inventory(5);
-        joseInventoryCopy = new Inventory(5);
+        //joseInventory = new Inventory(5);
+        //joseInventoryCopy = new Inventory(5);
         //loadPlayer();
         updateRadialBar();
     }
@@ -168,7 +186,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void savePlayer()
     {
-        SaveSystem.SavePlayer(this);
+        //SaveSystem.SavePlayer(this);
     }
 
     /*public void loadPlayer()

@@ -25,7 +25,6 @@ public class Inventory
         {
             if (PlayerMovement.joseInventory.itemSlots[i] == null)
             {
-
                 PlayerMovement.joseInventory.itemSlots[i] = new Pickable(pickable.getPickableName(), pickable.getQuantity(), pickable.getItemSprite());
                 arrayPrinter(PlayerMovement.joseInventory);
                 return;
