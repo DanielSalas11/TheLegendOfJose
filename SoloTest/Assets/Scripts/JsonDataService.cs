@@ -46,10 +46,11 @@ public class JsonDataService : IDataService
         }
         try{
             T data = JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+            Debug.Log(JsonConvert.SerializeObject(data));
             return data;
         }
         catch(Exception e){
-            Debug.LogError($"Filed to load data due to: {e.Message} {e.StackTrace}");
+            Debug.LogError($"Failed to load data due to: {e.Message} {e.StackTrace}");
             throw e;
         }
     }

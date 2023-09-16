@@ -6,12 +6,13 @@ using UnityEngine;
 public class PlayerData
 {
     //Player Stats Variables
-    public int maxHP;
-    public int currentHP;
-    public int money;
-    public int currentXP;
-    public int maxXP;
-    public int level;
+    public int maxHP = 3;
+    public int currentHP = 3;
+    public int money = 0;
+    public int currentXP = 0;
+    public int maxXP = 3;
+    public int level = 1;
+    private PlayerMovement player = PlayerMovement.instance;
 
     //Player's
     public string[] pickableName;
@@ -19,14 +20,14 @@ public class PlayerData
 
     //public float[] position;
 
-    public PlayerData(PlayerMovement Player)
+    public PlayerData()
     {
-        maxHP = Player.maxHP;
-        currentHP = Player.currentHP;
-        money = Player.money;
-        currentXP = Player.currentXP;
-        maxXP = Player.maxXP;
-        level = Player.level;
+        maxHP = player.maxHP;
+        currentHP = player.currentHP;
+        money = player.money;
+        currentXP = player.currentXP;
+        maxXP = player.maxXP;
+        level = player.level;
 
         /*pickableName = new string[5];
         quantity = new int[5];

@@ -55,6 +55,10 @@ public class Spear : MonoBehaviour
 
     void attack(Vector3 mousePos)
     {
+        if(player.currentHP == 0){
+            canAttack=false;
+            return;
+        }
         if (attacking)
         {
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);

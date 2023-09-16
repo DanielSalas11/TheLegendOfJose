@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void SerializeJson(){
-        if(DataService.SaveData("/player-stats.json", new PlayerData(instance),EncryptionEnabled)){
+        if(DataService.SaveData("/player-stats.json", new PlayerData(),EncryptionEnabled)){
             Debug.Log("Data Saved.");
         }else{
             Debug.LogError("Could not save file! Show something on the UI about it!");
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         //joseInventoryCopy = new Inventory(5);
         //loadPlayer();
         updateRadialBar();
-        Debug.Log(DataService.LoadData<PlayerData>("/player-stats.json",EncryptionEnabled));
+        PlayerData data = DataService.LoadData<PlayerData>("/player-stats.json",EncryptionEnabled);
     }
 
     private void updateRadialBar()
@@ -185,28 +185,6 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.GetChild(1).gameObject.SetActive(false);
     }
-
-    public void savePlayer()
-    {
-        //SaveSystem.SavePlayer(this);
-    }
-
-    /*public void loadPlayer()
-    {
-        PlayerData data = SaveSystem.loadData();
-
-        maxHP = data.maxHP;
-        currentHP = data.currentHP;
-        money = data.money;
-        currentXP = data.currentXP;
-        maxXP = data.maxXP;
-        level = data.level;
-        for (int i = 0; i < joseInventory.itemSlots.Length; i++)
-        {
-            joseInventory.itemSlots[i].setPickableName(data.pickableName[i]);
-            joseInventory.itemSlots[i].setQuantity(data.quantity[i]);
-        }
-    }*/
 
     public void getRespawnPosition()
     {
