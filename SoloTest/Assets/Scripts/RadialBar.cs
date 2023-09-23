@@ -9,7 +9,6 @@ public class RadialBar : MonoBehaviour
 
     public Image fill;
     public TextMeshProUGUI amount;
-    public PlayerMovement Jose;
     public int currentValue, maxValue;
 
     public void Add(int value)

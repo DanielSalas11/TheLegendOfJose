@@ -12,6 +12,7 @@ public class PlayerData
     public int currentXP;
     public int maxXP;
     public int level;
+    private PlayerMovement player = PlayerMovement.instance;
 
     //Player's
     public string[] pickableName;
@@ -19,22 +20,22 @@ public class PlayerData
 
     //public float[] position;
 
-    public PlayerData(PlayerMovement Player)
+    public PlayerData()
     {
-        maxHP = Player.maxHP;
-        currentHP = Player.currentHP;
-        money = Player.money;
-        currentXP = Player.currentXP;
-        maxXP = Player.maxXP;
-        level = Player.level;
+        maxHP = player.maxHP;
+        currentHP = player.currentHP;
+        money = player.money;
+        currentXP = player.currentXP;
+        maxXP = player.maxXP;
+        level = player.level;
 
-        pickableName = new string[5];
+        /*pickableName = new string[5];
         quantity = new int[5];
 
         for (int i = 0; i < Player.joseInventoryCopy.itemSlots.Length; i++)
         {
             pickableName[i] = Player.joseInventoryCopy.itemSlots[i].getPickableName();
             quantity[i] = Player.joseInventoryCopy.itemSlots[i].getQuantity();
-        }
+        }*/
     }
 }

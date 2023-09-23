@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,24 +12,42 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer PlayerSpriteR;
     public Transform attackPosition;
     public Animator playerAnimator;
-    public int maxHP = 3;
-    public int currentHP = 3;
+    public int maxHP;
+    public int currentHP;
     public RadialBar playerRadialBar;
-    public int money = 0;
-    public int currentXP = 0;
+    public int money;
+    public int currentXP;
     public int maxXP;
-    public int level = 1;
+    public int level;
 
     public static PlayerMovement instance;
     public Vector2 respawnPosition;
 
-    public static Inventory joseInventory;
-    public Inventory joseInventoryCopy;
+    public static Inventory joseInventory = new Inventory(5);
+    public Inventory joseInventoryCopy = new Inventory(5);
+    private IDataService DataService = new JsonDataService();
+    private bool EncryptionEnabled;
+
+    public void ToggleEncryption(bool EncryptionEnabled)
+    {
+        this.EncryptionEnabled = EncryptionEnabled;
+    }
+
+    public void SerializeJson(){
+        if(DataService.SaveData("/player-stats.json", new PlayerData(),EncryptionEnabled)){
+            Debug.Log("Data Saved.");
+        }else{
+            Debug.LogError("Could not save file! Show something on the UI about it!");
+            Debug.Log("Error");
+        }
+    }
 
     private void Awake()
     {
         instance = this;
-        maxXP = 3;
+        if(maxXP == 0){
+            maxXP = 3;
+        };
     }
 
     void Start() //Defines rigidBody2D
@@ -36,10 +55,11 @@ public class PlayerMovement : MonoBehaviour
         getRespawnPosition();
         rb2D = GetComponent<Rigidbody2D>();
         rb2D.transform.position = respawnPosition;
-        joseInventory = new Inventory(5);
-        joseInventoryCopy = new Inventory(5);
+        //joseInventory = new Inventory(5);
+        //joseInventoryCopy = new Inventory(5);
         //loadPlayer();
         updateRadialBar();
+        PlayerData data = DataService.LoadData<PlayerData>("/player-stats.json",EncryptionEnabled);
     }
 
     private void updateRadialBar()
@@ -165,28 +185,6 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.GetChild(1).gameObject.SetActive(false);
     }
-
-    public void savePlayer()
-    {
-        SaveSystem.SavePlayer(this);
-    }
-
-    /*public void loadPlayer()
-    {
-        PlayerData data = SaveSystem.loadData();
-
-        maxHP = data.maxHP;
-        currentHP = data.currentHP;
-        money = data.money;
-        currentXP = data.currentXP;
-        maxXP = data.maxXP;
-        level = data.level;
-        for (int i = 0; i < joseInventory.itemSlots.Length; i++)
-        {
-            joseInventory.itemSlots[i].setPickableName(data.pickableName[i]);
-            joseInventory.itemSlots[i].setQuantity(data.quantity[i]);
-        }
-    }*/
 
     public void getRespawnPosition()
     {

@@ -43,6 +43,7 @@ public class PauseMenu : MonoBehaviour
             hpText.text = "HP: " + joseScript.currentHP + "/" + joseScript.maxHP;
             xpText.text = "XP: " + joseScript.currentXP + "/" + joseScript.maxXP;
             lvlText.text = "Level " + joseScript.level;
+            joseScript.SerializeJson();
             if (gameIsPaused)
             {
                 resume(pauseMenuUI);
@@ -66,6 +67,7 @@ public class PauseMenu : MonoBehaviour
                     slotImages[i].sprite = PlayerMovement.joseInventory.itemSlots[i].itemSprite;
                     slotTexts[i].SetActive(true);
                     slotImages[i].gameObject.SetActive(true);
+                    Debug.Log("Item slot" + i + ":" + PlayerMovement.joseInventory.itemSlots[i].getPickableName() + PlayerMovement.joseInventory.itemSlots[i].getQuantity());
                 }
             }
 
