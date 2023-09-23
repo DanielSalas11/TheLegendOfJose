@@ -12,13 +12,13 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer PlayerSpriteR;
     public Transform attackPosition;
     public Animator playerAnimator;
-    public int maxHP = 3;
-    public int currentHP = 3;
+    public int maxHP;
+    public int currentHP;
     public RadialBar playerRadialBar;
-    public int money = 0;
-    public int currentXP = 0;
-    public int maxXP = 3;
-    public int level = 1;
+    public int money;
+    public int currentXP;
+    public int maxXP;
+    public int level;
 
     public static PlayerMovement instance;
     public Vector2 respawnPosition;

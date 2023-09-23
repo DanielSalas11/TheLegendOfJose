@@ -6,12 +6,12 @@ using UnityEngine;
 public class PlayerData
 {
     //Player Stats Variables
-    public int maxHP = 3;
-    public int currentHP = 3;
-    public int money = 0;
-    public int currentXP = 0;
-    public int maxXP = 3;
-    public int level = 1;
+    public int maxHP;
+    public int currentHP;
+    public int money;
+    public int currentXP;
+    public int maxXP;
+    public int level;
     private PlayerMovement player = PlayerMovement.instance;
 
     //Player's
